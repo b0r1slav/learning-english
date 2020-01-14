@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/learning-english/static/css/main.1c2fe9ad.chunk.css",
+    "main.js": "/learning-english/static/js/main.4ca6f402.chunk.js",
+    "main.js.map": "/learning-english/static/js/main.4ca6f402.chunk.js.map",
+    "runtime-main.js": "/learning-english/static/js/runtime-main.c8562280.js",
+    "runtime-main.js.map": "/learning-english/static/js/runtime-main.c8562280.js.map",
+    "static/css/2.67123b20.chunk.css": "/learning-english/static/css/2.67123b20.chunk.css",
+    "static/js/2.54b1d5aa.chunk.js": "/learning-english/static/js/2.54b1d5aa.chunk.js",
+    "static/js/2.54b1d5aa.chunk.js.map": "/learning-english/static/js/2.54b1d5aa.chunk.js.map",
+    "index.html": "/learning-english/index.html",
+    "precache-manifest.7c4e4a0925cebbf1cbcf38d7249cd6af.js": "/learning-english/precache-manifest.7c4e4a0925cebbf1cbcf38d7249cd6af.js",
+    "service-worker.js": "/learning-english/service-worker.js",
+    "static/css/2.67123b20.chunk.css.map": "/learning-english/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.1c2fe9ad.chunk.css.map": "/learning-english/static/css/main.1c2fe9ad.chunk.css.map",
+    "static/js/2.54b1d5aa.chunk.js.LICENSE": "/learning-english/static/js/2.54b1d5aa.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8562280.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.54b1d5aa.chunk.js",
+    "static/css/main.1c2fe9ad.chunk.css",
+    "static/js/main.4ca6f402.chunk.js"
+  ]
+}
