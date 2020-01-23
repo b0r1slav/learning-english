@@ -20,9 +20,9 @@ class Home extends React.Component {
 
     render() {
 
-        const list = items.map(function (item) {
+        const list = items.map(function (item, index) {
             return (
-                <div className="col-sm-4 col-6 P-5">
+                <div key={index} className="col-sm-4 col-6 P-5">
                     <Link to={item.uri}>
                         <div className="card">
                             <div className="card-body home-item">

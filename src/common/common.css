@@ -14,12 +14,28 @@
     padding: 0 !important;
 }
 
+.P-B0 {
+    padding-bottom: 0 !important;
+}
+
 .P-5 {
     padding: 5px !important;
 }
 
 .M-0 {
     margin: 0 !important;
+}
+
+.M-B10 {
+    margin-bottom: 10px !important;
+}
+
+.M-B20 {
+    margin-bottom: 20px !important;
+}
+
+button:focus {
+  outline: none;
 }
 
 .i-spin {
@@ -30,3 +46,8 @@
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+.bootstrap-modal {
+    background-color: #0000006e;
+}

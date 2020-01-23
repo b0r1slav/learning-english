@@ -1,3 +1,14 @@
+/**
+ * API routes
+ * 
+ * words/search/{search?}
+ * words/{limit}/{level?}
+ * phrases/{limit}
+ * exercises/search/{search?}
+ * exercises/{limit}/{lesson?}
+ * lessons
+ */
+
 const apiUri = 'https://summertime-sadness.herokuapp.com/api/';
 
 
