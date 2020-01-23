@@ -39,22 +39,9 @@
   font-size: 22px;
 }
 
-.clear-input {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: transparent;
-    border: none;
-    z-index: 5;
-}
-
 .search-response {
     overflow-y: auto;
     height: 250px;
-}
-
-.bootstrap-modal input {
-    border-radius: 0 !important;
 }
 
 .pronons {

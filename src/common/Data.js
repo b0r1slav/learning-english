@@ -1,10 +1,10 @@
 /**
  * API routes
  * 
- * words/search/{search?}
+ * search/words/{search?}
  * words/{limit}/{level?}
  * phrases/{limit}
- * exercises/search/{search?}
+ * search/exercises/{search?}
  * exercises/{limit}/{lesson?}
  * lessons
  */

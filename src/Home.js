@@ -10,6 +10,10 @@ const items = [
         title: 'Exercises'
     },
     {
+        uri: '/expressions',
+        title: 'Expressions'
+    },
+    {
         uri: '/settings',
         title: 'Settings'
     }

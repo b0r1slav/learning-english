@@ -1,6 +1,5 @@
 import React from 'react';
 import { Data } from './Data';
-import { IoMdClose } from 'react-icons/io';
 import { FaVolumeUp } from 'react-icons/fa';
 
 
@@ -20,14 +19,6 @@ class ModalDictionary extends React.Component {
 
         this.setState({
             value: event.currentTarget.value
-        });
-    };
-
-
-    clearInput = () => {
-
-        this.setState({
-            value: ''
         });
     };
 
@@ -66,8 +57,7 @@ class ModalDictionary extends React.Component {
                         </div>
                         <div className="modal-body P-5">
                             <div className="input-group M-B10">
-                                <input type="text" className="form-control" value={this.state.value} onChange={this.handleChange} />
-                                <button className="clear-input" onClick={this.clearInput}><IoMdClose /></button>
+                                <input type="search" className="form-control rounded-0" value={this.state.value} onChange={this.handleChange} />
                             </div>
 
                             <div className="search-response">
@@ -85,11 +75,9 @@ class ModalDictionary extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
-        
-        const search  = this.state.value || null;
 
         if (this.state.value !== prevState.value) {
-            Data.get(`words/search/${search}`)
+            Data.get(`search/words?value=${this.state.value}`)
             .then((response) => {
                 this.setState({
                     words: response.data
