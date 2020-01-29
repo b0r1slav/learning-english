@@ -28,9 +28,9 @@ class LearnWords extends React.Component {
 
 
     handleChange = (event, word) => {
-        const value = event.currentTarget.value.trim()
+        const value = event.currentTarget.value.trim().toLowerCase();
 
-        if (value === word.en) {
+        if (value === word.en.trim().toLowerCase()) {
             this.handleIKnow(word);
         } else {
             this.setState({
