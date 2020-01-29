@@ -30,12 +30,28 @@
     margin: 0 !important;
 }
 
+.M-10 {
+    margin: 10px !important;
+}
+
+.M-T10 {
+    margin-top: 10px !important;
+}
+
 .M-B10 {
     margin-bottom: 10px !important;
 }
 
+.M-B15 {
+    margin-bottom: 15px !important;
+}
+
 .M-B20 {
     margin-bottom: 20px !important;
+}
+
+.MH-180 {
+    min-height: 180px !important;
 }
 
 button:focus {

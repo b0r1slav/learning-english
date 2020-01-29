@@ -1,7 +1,7 @@
 import React from 'react';
 import App from '../App';
 import { IoIosArrowForward } from 'react-icons/io';
-import { Data, Local } from '../common/Data';
+import { Data, Uris, Local } from '../common/Data';
 import { Link } from 'react-router-dom';
 
 
@@ -18,7 +18,7 @@ class ExercisesNav extends React.Component {
 
     handleLocal = (response) => {
 
-        let learningEnglish = Local.getItem('learningEnglish');
+        let learningEnglish = Local.getData();
         const exercisesLength = Object.keys(learningEnglish.exercises).length;
 
         if (!exercisesLength || exercisesLength !== response.length) {
@@ -29,7 +29,7 @@ class ExercisesNav extends React.Component {
                 }
             });
 
-            Local.setItem('learningEnglish', learningEnglish);
+            Local.setData(learningEnglish);
         }
 
     };
@@ -37,7 +37,7 @@ class ExercisesNav extends React.Component {
 
     render() {
 
-        const {exercises} = Local.getItem('learningEnglish');
+        const {exercises} = Local.getData();
 
         this.state.lessons.sort(function(a, b) {
 
@@ -84,7 +84,7 @@ class ExercisesNav extends React.Component {
 
     componentDidMount() {
 
-        Data.get('lessons')
+        Data.get(Uris.lessons)
         .then((response) => {
 
             this.handleLocal(response);

@@ -6,6 +6,10 @@ import './common/common.css';
 
 const items = [
     {
+        uri: '/learn-words',
+        title: 'Learn Words'
+    },
+    {
         uri: '/exercises',
         title: 'Exercises'
     },

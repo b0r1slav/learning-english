@@ -36,6 +36,7 @@ class Sidebar extends React.Component {
             <div style={this.props.styles.sidebar} onClick={this.props.closeSidebar} className="sidebar">
                 <button className="btnClose"><IoIosArrowBack /></button>
                 <div className="sidebarContainer">
+                    <Link to="/learn-words">Learn Words</Link>
                     <Link to="/exercises">Exercises</Link>
                     <Link to="/expressions">Expressions</Link>
                     <button type="button" className="link" onClick={this.handleDictionary}>Dictionary</button>

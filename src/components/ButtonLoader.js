@@ -21,7 +21,7 @@ const ButtonLoader = (props) => {
     };
 
     return (
-        <button onClick={handleClick} type="button" id="button-loader" className="btn btn-sm btn-outline-primary float-right position-relative">
+        <button onClick={handleClick} type="button" className="button-loader btn btn-sm btn-outline-primary float-right position-relative">
             {content}
         </button>
     );

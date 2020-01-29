@@ -1,5 +1,6 @@
 import React from 'react';
-import { Data } from './Data';
+import { Data, Uris } from './Data';
+import { playMp3 } from './helpers';
 import { FaVolumeUp } from 'react-icons/fa';
 
 
@@ -24,10 +25,8 @@ class ModalDictionary extends React.Component {
 
 
     handlePlay = (event) => {
-        let mp3Name = event.currentTarget.dataset.word.trim().toLowerCase().replace(/[^a-zA-Z]+/, '_');
-        let audio = new Audio(`https://b0r1slav.github.io/pronunciation/mp3/${mp3Name}.mp3`);
 
-        audio.play();
+        playMp3(event.currentTarget.dataset.word);
 
     };
 
@@ -57,7 +56,11 @@ class ModalDictionary extends React.Component {
                         </div>
                         <div className="modal-body P-5">
                             <div className="input-group M-B10">
-                                <input type="search" className="form-control rounded-0" value={this.state.value} onChange={this.handleChange} />
+                                <input type="search" 
+                                    className="form-control rounded-0" 
+                                    value={this.state.value} 
+                                    onChange={this.handleChange} 
+                                    placeholder="Enter word ..." />
                             </div>
 
                             <div className="search-response">
@@ -76,8 +79,10 @@ class ModalDictionary extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        if (this.state.value !== prevState.value) {
-            Data.get(`search/words?value=${this.state.value}`)
+        const value = this.state.value.trim();
+
+        if (value !== prevState.value.trim()) {
+            Data.get(`${Uris.wordsSearch}?value=${value}`)
             .then((response) => {
                 this.setState({
                     words: response.data

@@ -1,6 +1,6 @@
 import React from 'react';
 import App from '../App';
-import { Data, Local } from '../common/Data';
+import { Data, Uris, Local } from '../common/Data';
 import '../common/common.css';
 
 
@@ -20,14 +20,14 @@ class Exercises extends React.Component {
     handleAnswer = (event) => {
         const { lesson } = this.props.match.params;
         const { id } = event.currentTarget.dataset;
-        let learningEnglish = Local.getItem('learningEnglish');
+        let learningEnglish = Local.getData();
         let exercises = learningEnglish.exercises[`lesson${lesson}`];
 
         if (exercises.indexOf(id) < 0) {
             exercises.push(id);
         }
 
-        Local.setItem('learningEnglish', learningEnglish);
+        Local.setData(learningEnglish);
     };
 
     handleBlur = (event) => {
@@ -81,10 +81,10 @@ class Exercises extends React.Component {
 
     componentDidMount() {
 
-        Data.get(`exercises/200/${this.props.match.params.lesson}`)
+        Data.get(`${Uris.exrcisesRead}/200/${this.props.match.params.lesson}`)
             .then((response) => {
 
-                let local = Local.getItem('learningEnglish');
+                let local = Local.getData();
 
                 this.setState({
                     data: response,

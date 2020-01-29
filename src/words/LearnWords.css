@@ -1,0 +1,13 @@
+.word-id {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 12px;
+}
+
+.index {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+}

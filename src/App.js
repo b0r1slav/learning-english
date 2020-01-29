@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navigation from './common/navigation/Navigation';
 import Sidebar from './common/sidebar/Sidebar';
+import { Local } from './common/Data';
 
 
 class App extends React.Component {
@@ -51,10 +52,8 @@ class App extends React.Component {
 
     componentDidMount() {
 
-        const local = { exercises: {}};
-
-        if( ! localStorage.getItem('learningEnglish') ) {
-            localStorage.setItem('learningEnglish', JSON.stringify(local));
+        if( ! Local.getData() ) {
+            Local.setData();
         }
     }
 }
