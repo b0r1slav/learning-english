@@ -21,7 +21,7 @@ class Settings extends React.Component {
     handleResetExercises = () => {
         let learningEnglish = Local.getData();
 
-        learningEnglish.exercises = {};
+        learningEnglish.exercises = Local.defaultData.exercises;
 
         Local.setData(learningEnglish);
     };
@@ -30,10 +30,7 @@ class Settings extends React.Component {
     handleResetLearnWords = () => {
         let learningEnglish = Local.getData();
 
-        learningEnglish.words = {
-            dontKnow: [],
-            offset: 0
-        };
+        learningEnglish.words = Local.defaultData.words;
 
         Local.setData(learningEnglish);
     };
@@ -52,6 +49,13 @@ class Settings extends React.Component {
     };
 
 
+    handleResetAll = () => {
+        
+        Local.setData();
+
+    };
+
+
     render() {
 
         return (
@@ -61,7 +65,7 @@ class Settings extends React.Component {
                     <div className="card">
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item li-nav">
-                                Sound 
+                                Sound
                                 <button type="button" className="btn btn-sm btn-outline-primary rounded-circle float-right" onClick={this.handleSound}>
                                     {this.state.sound ? <FaVolumeUp /> : <FaVolumeMute />}
                                 </button>
@@ -73,6 +77,10 @@ class Settings extends React.Component {
                             <li className="list-group-item li-nav">
                                 Learn Words
                                 <ButtonLoader func={this.handleResetLearnWords} text="reset progress" />
+                            </li>
+                            <li className="list-group-item li-nav">
+                                <p>Reset all progress and settings!</p>
+                                <ButtonLoader func={this.handleResetAll} text="hard reset" />
                             </li>
                         </ul>
                     </div>
