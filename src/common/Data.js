@@ -46,6 +46,8 @@ export const Local = {
         words: {
             dontKnow: [],
             offset: 0,
+            limit: 0,
+            know: 0
         }
     },
 

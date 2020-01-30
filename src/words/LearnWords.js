@@ -8,6 +8,7 @@ import Quiz from './Quiz';
 
 
 const setCount = 9;
+const deafultWord = {id:0,bg:'----',en:'----',level:'--'};
 
 
 class LearnWords extends React.Component {
@@ -16,13 +17,13 @@ class LearnWords extends React.Component {
         super(props);
 
         this.state = {
-            words: [
-                { id: 0, en: '-----', bg: '-----', level: '--' }
-            ],
+            words: [],
             currentWord: 0,
             value: '',
             answer: 0,
-            offset: 0,
+            know: 0,
+            lastLimit: 0,
+            dontKnow: []
         };
     }
 
@@ -30,101 +31,107 @@ class LearnWords extends React.Component {
     handleChange = (event, word) => {
         const value = event.currentTarget.value.trim().toLowerCase();
 
+        this.setState({
+            value: event.currentTarget.value
+        });
+
+
         if (value === word.en.trim().toLowerCase()) {
             this.handleIKnow(word);
-        } else {
-            this.setState({
-                value: event.currentTarget.value
-            });
         }
 
     };
 
 
     handleIKnow = (word) => {
-        let { currentWord } = this.state;
+        let { currentWord, know, dontKnow, lastLimit } = this.state;
         let learningEnglish = Local.getData();
 
 
         playMp3(word.en);
 
-        learningEnglish.words.dontKnow = learningEnglish.words.dontKnow.filter(item => item.id !== word.id);
+        const dontKnowFilter = dontKnow.filter(item => item.id !== word.id);
 
         currentWord++;
 
+        know++;
+
         if (currentWord === setCount) {
 
-            if (learningEnglish.words.offset) {
-                learningEnglish.words.offset = learningEnglish.words.offset + setCount - learningEnglish.words.dontKnow.length;
-            } else {
-                learningEnglish.words.offset = setCount;
-            }
-
+            learningEnglish.words.dontKnow = dontKnow;
+            learningEnglish.words.offset += lastLimit;
 
             this.getWords(learningEnglish)
                 .then(function (response) {
 
-                    let data = response.concat(learningEnglish.words.dontKnow)
+                    let data = response.data.concat(response.local.words.dontKnow)
 
                     this.setState({
                         words: data,
                         currentWord: 0,
                         value: '',
-                        offset: learningEnglish.words.offset
+                        dontKnow: data,
+                        lastLimit: response.local.words.limit
                     });
 
-                    learningEnglish.words.dontKnow = data;
-                    Local.setData(learningEnglish);
+                    response.local.words.dontKnow = data;
+                    response.local.words.know = know;
+
+                    Local.setData(response.local);
 
                 }.bind(this));
 
         } else {
             this.setState({
                 currentWord: currentWord,
-                value: ''
+                value: '',
+                know: know,
+                dontKnow: dontKnowFilter
             });
-
-            Local.setData(learningEnglish);
         }
 
     };
 
 
     handleNext = () => {
-        let { currentWord } = this.state;
+        let { currentWord, know, dontKnow, lastLimit } = this.state;
         let learningEnglish = Local.getData();
 
         currentWord++;
 
         if (currentWord === setCount) {
 
-            if (learningEnglish.words.offset) {
-                learningEnglish.words.offset = learningEnglish.words.offset + setCount - learningEnglish.words.dontKnow.length;
-            } else {
-                learningEnglish.words.offset = setCount;
-            }
+            learningEnglish.words.dontKnow = dontKnow;
+            learningEnglish.words.offset += lastLimit;
 
             this.getWords(learningEnglish)
                 .then(function (response) {
 
-                    let data = response.concat(learningEnglish.words.dontKnow);
+                    let data = response.data.concat(response.local.words.dontKnow);
+
+                    response.local.words.dontKnow = data;
+                    response.local.words.know = know;
+
 
                     this.setState({
                         words: data,
                         currentWord: 0,
                         answer: 0,
-                        offset: learningEnglish.words.offset
+                        value: '',
+                        know: response.local.words.know,
+                        dontKnow: data,
+                        lastLimit: response.local.words.limit
                     });
-                    
-                    learningEnglish.words.dontKnow = data;
-                    Local.setData(learningEnglish);
+
+                    Local.setData(response.local);
 
                 }.bind(this))
                 .catch(function (data) {
 
                     this.setState({
                         words: data,
-                        offset: learningEnglish.words.offset
+                        value: '',
+                        know: know
                     });
 
                 }.bind(this));;
@@ -132,6 +139,7 @@ class LearnWords extends React.Component {
         } else {
             this.setState({
                 currentWord: currentWord,
+                value: '',
                 answer: 0
             });
         }
@@ -162,7 +170,9 @@ class LearnWords extends React.Component {
                 Data.get(url)
                     .then((response) => {
 
-                        resolve(response);
+                        local.words.limit = limit;
+
+                        resolve({data: response, local: local});
 
                     });
             } else {
@@ -176,7 +186,7 @@ class LearnWords extends React.Component {
 
     render() {
 
-        const word = this.state.words[this.state.currentWord];
+        const word = this.state.words[this.state.currentWord] || deafultWord;
 
         const compQuiz = (
             <Quiz handleChange={this.handleChange} 
@@ -194,12 +204,12 @@ class LearnWords extends React.Component {
                 <App />
                 <div className="main">
                     <div className="card item MH-180" >
-                        <span className="word-id">{word.id}</span>
                         <span className="index">{this.state.currentWord + 1}</span>
 
                         {this.state.answer ? compAnswer : compQuiz}
                     </div>
                     <div className="M-10">
+                        <p>Know: {this.state.know}</p>
                         <p>Level: {word.level}</p>
                         <p>Set's count: {setCount}</p>
                     </div>
@@ -216,22 +226,26 @@ class LearnWords extends React.Component {
         this.getWords(learningEnglish)
             .then(function (response) {
                 
-                let data = response.concat(learningEnglish.words.dontKnow);
-                learningEnglish.words.dontKnow = data;
+                let data = response.data.concat(response.local.words.dontKnow);
+                response.local.words.dontKnow = data;
 
                 this.setState({
                     words: data,
-                    offset: learningEnglish.words.offset
+                    know: response.local.words.know,
+                    lastLimit: response.local.words.limit,
+                    dontKnow: data
                 });
 
-                Local.setData(learningEnglish);
+                Local.setData(response.local);
 
             }.bind(this))
             .catch(function(data) {
 
                 this.setState({
                     words: data,
-                    offset: learningEnglish.words.offset
+                    know: learningEnglish.words.know,
+                    dontKnow: data,
+                    lastLimit: learningEnglish.words.limit
                 });
 
             }.bind(this));
