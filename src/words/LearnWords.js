@@ -58,7 +58,7 @@ class LearnWords extends React.Component {
 
         if (currentWord === setCount) {
 
-            learningEnglish.words.dontKnow = dontKnow;
+            learningEnglish.words.dontKnow = dontKnowFilter;
             learningEnglish.words.offset += lastLimit;
 
             this.getWords(learningEnglish)
@@ -71,6 +71,7 @@ class LearnWords extends React.Component {
                         currentWord: 0,
                         value: '',
                         dontKnow: data,
+                        know: know,
                         lastLimit: response.local.words.limit
                     });
 
@@ -204,6 +205,7 @@ class LearnWords extends React.Component {
                 <App />
                 <div className="main">
                     <div className="card item MH-180" >
+                        <span className="word-id">{word.id}</span>
                         <span className="index">{this.state.currentWord + 1}</span>
 
                         {this.state.answer ? compAnswer : compQuiz}

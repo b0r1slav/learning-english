@@ -79,8 +79,14 @@ class Settings extends React.Component {
                                 <ButtonLoader func={this.handleResetLearnWords} text="reset progress" />
                             </li>
                             <li className="list-group-item li-nav">
-                                <p>Reset all progress and settings!</p>
-                                <ButtonLoader func={this.handleResetAll} text="hard reset" />
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        Reset all progress and settings!
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <ButtonLoader func={this.handleResetAll} text="hard reset" />
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
