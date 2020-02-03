@@ -3,7 +3,7 @@
  * 
  * words/search?value={search}
  * words/read/{limit}/{level?} - pagination
- * words/get?limit={int}&offset={int}&id={int}&level={str}
+ * words/get?limit={int}&offset={int}&level={str}
  * phrases/read/{limit} - pagination
  * exercises/search?value={search}
  * exercises/read/{limit}/{lesson?} - pagination
@@ -11,6 +11,26 @@
  */
 
 const apiUri = 'https://summertime-sadness.herokuapp.com/api/';
+
+
+export const Levels = ['A1', 'A2', 'B1', 'B2', 'B2.2', 'C1'];
+
+
+const wordsLocal = function () {
+    let words = {};
+
+    Levels.forEach(element => {
+        words[element] = {
+            dontKnow: [],
+            offset: 0,
+            limit: 0,
+            know: 0,
+            wrong: 0
+        };
+    });
+
+    return words;
+};
 
 
 export const Data = {
@@ -44,10 +64,8 @@ export const Local = {
         sound: true,
         exercises: {},
         words: {
-            dontKnow: [],
-            offset: 0,
-            limit: 0,
-            know: 0
+            levels: wordsLocal(),
+            currentLevel: 'A1'
         }
     },
 
@@ -63,7 +81,15 @@ export const Local = {
         localStorage.setItem(key, JSON.stringify(data));
     },
 
-    getData: function (key = 'learningEnglish') {
-        return JSON.parse(localStorage.getItem(key));
+    getData: function (key='', keyLocal = 'learningEnglish') {
+        const local = JSON.parse(localStorage.getItem(keyLocal));
+
+        if (key) {
+
+            return key.split('/').reduce((o, i) => o[i], local);
+        }
+
+        return local;
     }
 };
+
