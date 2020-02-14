@@ -25,7 +25,8 @@ const wordsLocal = function () {
             offset: 0,
             limit: 0,
             know: 0,
-            wrong: 0
+            wrong: 0,
+            count: 895
         };
     });
 
