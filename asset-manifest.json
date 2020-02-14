@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/learning-english/static/css/main.eb6023bc.chunk.css",
-    "main.js": "/learning-english/static/js/main.be459b6e.chunk.js",
-    "main.js.map": "/learning-english/static/js/main.be459b6e.chunk.js.map",
+    "main.js": "/learning-english/static/js/main.910beff5.chunk.js",
+    "main.js.map": "/learning-english/static/js/main.910beff5.chunk.js.map",
     "runtime-main.js": "/learning-english/static/js/runtime-main.c8562280.js",
     "runtime-main.js.map": "/learning-english/static/js/runtime-main.c8562280.js.map",
     "static/css/2.67123b20.chunk.css": "/learning-english/static/css/2.67123b20.chunk.css",
     "static/js/2.dd3a6503.chunk.js": "/learning-english/static/js/2.dd3a6503.chunk.js",
     "static/js/2.dd3a6503.chunk.js.map": "/learning-english/static/js/2.dd3a6503.chunk.js.map",
     "index.html": "/learning-english/index.html",
-    "precache-manifest.6d56d66555dd3d8150d43bb1eaa3384f.js": "/learning-english/precache-manifest.6d56d66555dd3d8150d43bb1eaa3384f.js",
+    "precache-manifest.1b088b7835a442d43b41c00681ad52bb.js": "/learning-english/precache-manifest.1b088b7835a442d43b41c00681ad52bb.js",
     "service-worker.js": "/learning-english/service-worker.js",
     "static/css/2.67123b20.chunk.css.map": "/learning-english/static/css/2.67123b20.chunk.css.map",
     "static/css/main.eb6023bc.chunk.css.map": "/learning-english/static/css/main.eb6023bc.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.67123b20.chunk.css",
     "static/js/2.dd3a6503.chunk.js",
     "static/css/main.eb6023bc.chunk.css",
-    "static/js/main.be459b6e.chunk.js"
+    "static/js/main.910beff5.chunk.js"
   ]
 }
