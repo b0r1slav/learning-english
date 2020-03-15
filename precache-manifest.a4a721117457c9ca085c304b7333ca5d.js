@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f94ef8d2847440471670f844d123ac9b",
+    "revision": "bb385f4a0031eb2f34d7efa6fd2d6f36",
     "url": "/learning-english/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learning-english/static/css/2.67123b20.chunk.css"
   },
   {
-    "revision": "5bfc88bfcf1593f98c49",
+    "revision": "aa8b186d99a7d0f5991a",
     "url": "/learning-english/static/css/main.eb6023bc.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learning-english/static/js/2.dd3a6503.chunk.js.LICENSE"
   },
   {
-    "revision": "5bfc88bfcf1593f98c49",
-    "url": "/learning-english/static/js/main.910beff5.chunk.js"
+    "revision": "aa8b186d99a7d0f5991a",
+    "url": "/learning-english/static/js/main.ba2f98cf.chunk.js"
   },
   {
     "revision": "234504d03f3aeaabf29b",
