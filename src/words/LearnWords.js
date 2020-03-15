@@ -152,7 +152,7 @@ class LearnWords extends React.Component {
                         currentComponent: 0
                     });
 
-                }.bind(this));;
+                }.bind(this));
 
         } else {
             this.setState({
@@ -168,7 +168,8 @@ class LearnWords extends React.Component {
 
     handleAnswer = () => {
         this.setState({
-            currentComponent: 1
+            currentComponent: 1,
+            value: ''
         });
     };
 
@@ -225,9 +226,9 @@ class LearnWords extends React.Component {
                     count: response.data.count
                 });
 
+                response.local.count = response.data.count;
                 local.words.levels[level] = response.local;
                 local.words.currentLevel = level;
-                local.words.count = response.data.count;
 
                 Local.setData(local);
 
@@ -257,9 +258,9 @@ class LearnWords extends React.Component {
 
     render() {
 
-        const word = this.state.words[this.state.currentWord] || deafultWord;
-        const { level, currentComponent } = this.state;
-        const comp = this.state.count === this.state.know ? 2 : currentComponent;
+        const { level, currentComponent, count, know, currentWord } = this.state;
+        const word = this.state.words[currentWord] || deafultWord;
+        const comp = count === know ? 2 : currentComponent;
         const levels = Levels.map(function (title, index) {
             return <option key={index} value={title} >{title}</option>
         });
@@ -295,6 +296,7 @@ class LearnWords extends React.Component {
                         <p>Know: {this.state.know}</p>
                         <p>Wrong: {this.state.wrong}</p>
                         <p>Set's count: {setCount}</p>
+                        <p>Level count: {count}</p>
                     </div>
                     <div className="P-10">
                         <span>Level: </span>
