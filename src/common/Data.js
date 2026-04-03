@@ -10,7 +10,7 @@
  * lessons
  */
 
-const apiUri = 'https://summertime-sadness.herokuapp.com/api/';
+const apiUri = 'https://summertime-sadness.onrender.com/';
 
 
 export const Levels = ['A1', 'A2', 'B1', 'B2', 'B2.2', 'C1'];
