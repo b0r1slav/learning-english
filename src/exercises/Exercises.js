@@ -81,7 +81,7 @@ class Exercises extends React.Component {
 
     componentDidMount() {
 
-        Data.get(`${Uris.exrcisesRead}/200/${this.props.match.params.lesson}`)
+        Data.get(`${Uris.exrcisesRead}/${this.props.match.params.lesson}`)
             .then((response) => {
 
                 let local = Local.getData();

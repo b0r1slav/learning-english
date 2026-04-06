@@ -53,7 +53,7 @@ export const Uris = {
     wordsGet: apiUri + 'words/get',
     phrasesRead: apiUri + 'phrases/read',
     exrcisesSearch: apiUri + 'exercises/search',
-    exrcisesRead: apiUri + 'exercises/read',
+    exrcisesRead: apiUri + 'exercises',
     lessons: apiUri + 'lessons',
 
 };
