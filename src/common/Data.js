@@ -52,7 +52,7 @@ export const Uris = {
     wordsRead: apiUri + 'words/read',
     wordsGet: apiUri + 'words/get',
     phrasesRead: apiUri + 'phrases/read',
-    exrcisesSearch: apiUri + 'exercises/search',
+    exrcisesSearch: apiUri + 'sentences/search',
     exrcisesRead: apiUri + 'exercises',
     lessons: apiUri + 'lessons',
 
